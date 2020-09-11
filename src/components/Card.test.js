@@ -1,7 +1,9 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import Card from './Card';
+import renderer from 'react-test-renderer';
 
 it('expect to render Card component', () => {
-   expect(shallow(<Card />).length).toEqual(1);
+   const tree = renderer.create(<Card />).toJSON();
+   expect(tree).toMatchSnapshot();
 })
